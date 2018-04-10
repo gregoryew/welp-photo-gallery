@@ -1,1 +1,1 @@
-# welp-photo-gallery
+# welp-photo-gallery-proxy
