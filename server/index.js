@@ -10,6 +10,7 @@ app.use((req,res,next)=>{
     console.log(req.url, req.method)
     next();
 })
+
 app.get('/welp/photo/',(req,res)=> {
     db.getById(5, (error,results) => {
         if (error) {
