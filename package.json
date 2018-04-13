@@ -1,5 +1,5 @@
 {
-  "name": "hackreactor-groceries",
+  "name": "welp-photo-gallery",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "nodemon server/index.js",
     "test": "jest --watchAll"
   },
-  "author": "Beth Johnson",
+  "author": "Dylan Qian",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -21,9 +21,9 @@
   "dependencies": {
     "express": "^4.15.0",
     "jquery": "^3.3.1",
-    "mongoose": "^5.0.14",
     "lightbox": "^0.5.0",
     "lightbox2": "^2.10.0",
+    "mongoose": "^5.0.14",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
