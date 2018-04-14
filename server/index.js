@@ -13,11 +13,11 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/photo/:id', (req, res) => {
-  db.getById(, (error, results) => {
+  db.getById(req.params.id, (error, results) => {
     if (error) {
       console.log('error from app.get');
     } else {
-      res.send(results);
+      res.json(results);
     }
   });
 }); 
