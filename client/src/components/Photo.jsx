@@ -24,14 +24,14 @@ export default class Photo extends React.Component {
   render() {
     if (this.state.hovered === true) {
       return (
-          <span class="square" onMouseEnter={() => this.mouseOnPic()} onMouseLeave={() => this.mouseLeavePic()}>
-            <a href={this.props.url} data-lightbox = "food" ><img height="250" width = "250" src={`${this.props.url}`} className="image" /></a>
+          <span class="photo" onMouseEnter={() => this.mouseOnPic()} onMouseLeave={() => this.mouseLeavePic()} onClick = {() => this.props.handleOpen(this.props.photo)}>
+          <img height="250" width="250" src={this.props.photo.photoUrl} className="image" />
         </span>
       )
     } else {
       return (
-          <span class="square" onMouseEnter={() => this.mouseOnPic()} onMouseLeave={() => this.mouseLeavePic()}>
-        <a href={this.props.url} data-lightbox="food" ><img height="220" width = "220" src={`${this.props.url}`} className="image" /></a>
+        <span class="photo" onMouseEnter={() => this.mouseOnPic()} onMouseLeave={() => this.mouseLeavePic()} onClick={() => this.props.handleOpen(this.props.photo)}>
+          <img height="220" width="220" src={this.props.photo.photoUrl} className="image" />
       </span>
        )
      }
