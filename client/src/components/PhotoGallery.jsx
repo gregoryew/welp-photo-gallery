@@ -4,8 +4,6 @@ import Photo from './Photo.jsx'
 
 const queryString = require('query-string');
 
-
-
 export default class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +26,7 @@ export default class PhotoGallery extends React.Component {
       success: (results) => {
         const restaurantPhotos = []
         for (let i = 0; i < results.length; i++) {
-          restaurantPhotos.push(results[i].photoUrl);
+          restaurantPhotos.push(results[i]);
         }
         this.setState({
           photos: restaurantPhotos,
@@ -43,8 +41,8 @@ export default class PhotoGallery extends React.Component {
   render() {
     return (
       <div>
-        I am a photo gallery
-        {this.state.photos.map((url)=> <Photo url = {url}/>)}
+        <div>I am a photo gallery</div>
+        {this.state.photos.map((photo)=> <Photo photo = {photo}/>)}
       </div>
     );
   }
