@@ -1,22 +1,26 @@
 import React from 'react';
 import $ from 'jquery';
-import Photo from './Photo.jsx'
+import Photo from './Photo.jsx';
+import Modal from './Modal.jsx';
 
 const queryString = require('query-string');
-
-
 
 export default class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       photos: [],
+      currentPhotos:[],
+      showModal: false,
+      selectedPhoto:[],
     };
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const parsed = queryString.parse(location.search);
-    this.getPhotos(Number(parsed.id))
+    this.getPhotos(Number(parsed.id));
   }
 
   getPhotos(id) {
@@ -28,23 +32,45 @@ export default class PhotoGallery extends React.Component {
       success: (results) => {
         const restaurantPhotos = []
         for (let i = 0; i < results.length; i++) {
-          restaurantPhotos.push(results[i].photoUrl);
+          restaurantPhotos.push(results[i]);
         }
+        const firstThreePhotos = restaurantPhotos.slice(0,3);
         this.setState({
           photos: restaurantPhotos,
+          currentPhotos: firstThreePhotos,
         });
       },
       error: (error) => {
         console.log('get request error')
       }
     })
-  }
+  };
+
+  handleOpen(photo) {
+    this.setState({
+      showModal: true,
+      selectedPhoto: photo,
+    });
+  };
+
+  handleClose() {
+    this.setState({
+      showModal: false,
+      selectedPhoto: [],
+    });
+  };
 
   render() {
     return (
-      <div>
+      <div className="intro">
         I am a photo gallery
-        {this.state.photos.map((url)=> <Photo url = {url}/>)}
+        {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen}/>)}
+        {this.state.showModal && (
+          <Modal
+            selectedPhoto={this.state.selectedPhoto}
+            handleClose={this.handleClose}
+          />
+        )}
       </div>
     );
   }
