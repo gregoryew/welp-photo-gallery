@@ -21,7 +21,7 @@ body {
 .modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
+    padding-top: 25px; /* Location of the box */
     display:flex;
     left: 0;
     top: 0;
@@ -34,7 +34,7 @@ body {
 
 .modal-photo {
     background-color: black;
-    margin: 5px 0px 25px 50px;
+    margin: 5px 0px 25px 200px;
     padding: 0px;
     border: 1px solid black;
     width: 70%;
@@ -43,13 +43,13 @@ body {
 }
 .modal-selectedphoto { 
     max-width: 100%;
-    height: auto;
+    height: 100%;
     text-align: center;
 }
 
 .modal-comment{
     background-color: white;
-    margin: 5px 50px 25px 0px;
+    margin: 5px 200px 25px 0px;
     padding:0px;
     border: 1px solid white;
     width: 30%;
