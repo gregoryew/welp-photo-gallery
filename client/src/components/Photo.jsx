@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentBox from './CommentBox.jsx';
 
 
 export default class Photo extends React.Component {
