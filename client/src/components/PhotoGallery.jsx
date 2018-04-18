@@ -16,6 +16,8 @@ export default class PhotoGallery extends React.Component {
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.previousPhoto = this.previousPhoto.bind(this);
+    this.nextPhoto = this.nextPhoto.bind(this);
   }
 
   componentDidMount() {
@@ -47,28 +49,61 @@ export default class PhotoGallery extends React.Component {
   };
 
   handleOpen(photo) {
+    console.log(photo)
     this.setState({
       showModal: true,
       selectedPhoto: photo,
     });
-  };
+  }
 
   handleClose() {
     this.setState({
       showModal: false,
       selectedPhoto: [],
     });
-  };
+  }
+
+  previousPhoto(photo) {
+    let previousOne;
+    const index = this.state.photos.indexOf(photo);
+    if (index === 0) {
+      previousOne = this.state.photos[this.state.photos.length - 1];
+    } else {
+      previousOne = this.state.photos[index - 1];
+    }
+    this.setState({
+      selectedPhoto: previousOne,
+    },()=> {
+      console.log(this.state.selectedPhoto)
+    });
+  }
+
+  nextPhoto(photo) {
+    let nextOne;
+    const index = this.state.photos.indexOf(photo);
+    if (index === (this.state.photos.length - 1)) {
+      nextOne = this.state.photos[0];
+    } else {
+      nextOne = this.state.photos[index + 1];
+    }
+    this.setState({
+      selectedPhoto: nextOne,
+    });
+  }
 
   render() {
     return (
       <div className="intro">
         I am a photo gallery
+        <a className="prev"></a>
         {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen}/>)}
+        <a className="next"></a>
         {this.state.showModal && (
           <Modal
             selectedPhoto={this.state.selectedPhoto}
             handleClose={this.handleClose}
+            previousPhoto={this.previousPhoto}
+            nextPhoto={this.nextPhoto}
           />
         )}
       </div>
