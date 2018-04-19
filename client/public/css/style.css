@@ -133,3 +133,30 @@ body {
 .photo-gallery-prev{
     background: url(../images/prev.png) left 48% no-repeat;
 }
+
+
+/* Description bar for photogallery */
+.descriptionbar{
+    position: relative;
+    display: flex;
+    height: 45px;
+    z-index:2;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.2); /* Black w/ opacity */
+    padding:0px;
+    margin:0px;
+    top:-50px;
+}
+
+.descriptionbarcomment{
+    width: 180px;
+    padding: 5px;
+}
+
+.shortcomment{
+    color:white;
+}
+
+.descriptionuser{
+    color: lightgrey;
+}
