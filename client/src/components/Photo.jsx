@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentBox from './CommentBox.jsx';
+import DescriptionBar from './DescriptionBar.jsx'
 
 
 export default class Photo extends React.Component {
@@ -27,6 +28,7 @@ export default class Photo extends React.Component {
       return (
           <span class="photo" onMouseEnter={() => this.mouseOnPic()} onMouseLeave={() => this.mouseLeavePic()} onClick = {() => this.props.handleOpen(this.props.photo)}>
           <img height="250" width="250" src={this.props.photo.photoUrl} className="image" />
+          <DescriptionBar photo = {this.props.photo}/> 
         </span>
       )
     } else {
