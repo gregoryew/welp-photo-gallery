@@ -10,14 +10,17 @@ export default class PhotoGallery extends React.Component {
     super(props);
     this.state = {
       photos: [],
-      currentPhotos:[],
+      currentPhotos: [],
       showModal: false,
-      selectedPhoto:[],
+      selectedPhoto: [],
+      index: 0,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.previousPhoto = this.previousPhoto.bind(this);
     this.nextPhoto = this.nextPhoto.bind(this);
+    this.sliderNext = this.sliderNext.bind(this);
+    this.sliderPrevious = this.sliderPrevious.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +66,7 @@ export default class PhotoGallery extends React.Component {
     });
   }
 
+
   previousPhoto(photo) {
     let previousOne;
     const index = this.state.photos.indexOf(photo);
@@ -91,13 +95,36 @@ export default class PhotoGallery extends React.Component {
     });
   }
 
+  sliderNext() {
+    console.log(this.state.index)
+    if (this.state.index < this.state.photos.length - 3) {
+      const nextThree = this.state.photos.slice((this.state.index+1), (this.state.index+4))
+      console.log(nextThree)
+      this.setState({
+        index: this.state.index + 1,
+        currentPhotos: nextThree,
+      });
+    }
+  }
+
+  sliderPrevious() {
+    if (this.state.index > 0) {
+      const previousThree = this.state.photos.slice((this.state.index - 1), (this.state.index + 2))
+      console.log(previousThree)
+      this.setState({
+        index: this.state.index - 1,
+        currentPhotos: previousThree,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="intro">
         I am a photo gallery
-        <a className="prev"></a>
+        <a className="photo-gallery-prev" onClick = {() => this.sliderPrevious()}></a>
         {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen}/>)}
-        <a className="next"></a>
+        <a className="photo-gallery-next" onClick = {()=> this.sliderNext()}></a>
         {this.state.showModal && (
           <Modal
             selectedPhoto={this.state.selectedPhoto}

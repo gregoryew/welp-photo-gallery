@@ -7,9 +7,9 @@ class Modal extends React.Component {
       <div className="modal">
         <span className="close cursor" onClick={() => this.props.handleClose()}>Close  &times;</span>
         <div className="modal-photo">
-          <a className="prev" onClick = {()=> this.props.previousPhoto(this.props.selectedPhoto)}></a>
+          <a className="modal-prev" onClick = {()=> this.props.previousPhoto(this.props.selectedPhoto)}></a>
           <img className = "modal-selectedphoto" src={this.props.selectedPhoto.photoUrl} />
-          <a className="next" onClick={() => this.props.nextPhoto(this.props.selectedPhoto)}></a>
+          <a className="modal-next" onClick={() => this.props.nextPhoto(this.props.selectedPhoto)}></a>
         </div>
         <div className='modal-comment'>
           <CommentBox photo={this.props.selectedPhoto} />
