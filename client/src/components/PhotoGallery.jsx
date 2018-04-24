@@ -121,7 +121,6 @@ export default class PhotoGallery extends React.Component {
   render() {
     return (
       <div className="intro">
-        I am a photo gallery
         <a className="photo-gallery-prev" onClick = {() => this.sliderPrevious()}></a>
         {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen}/>)}
         <a className="photo-gallery-next" onClick = {()=> this.sliderNext()}></a>
