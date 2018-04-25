@@ -146,7 +146,7 @@ export default class PhotoGallery extends React.Component {
         {this.state.totalNumberOfPics>=3 &&
           <a className="photo-gallery-prev" onClick={() => this.sliderPrevious()} ></a>
         }
-        {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen} totalNumberOfPics = {this.state.totalNumberOfPics} emptyPage = {this.state.emptyPage}/>)}
+          {this.state.currentPhotos.map((photo) => <Photo key={photo.photoId} photo = {photo} handleOpen = {this.handleOpen} totalNumberOfPics = {this.state.totalNumberOfPics} emptyPage = {this.state.emptyPage}/>)}
         {this.state.totalNumberOfPics >= 3 &&
           <a className="photo-gallery-next" onClick={() => this.sliderNext()}></a>
         }
