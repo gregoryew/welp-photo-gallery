@@ -14,6 +14,8 @@ export default class PhotoGallery extends React.Component {
       showModal: false,
       selectedPhoto: [],
       index: 0,
+      modalIndex: 0,
+      totalNumberOfPics: 0,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -21,6 +23,10 @@ export default class PhotoGallery extends React.Component {
     this.nextPhoto = this.nextPhoto.bind(this);
     this.sliderNext = this.sliderNext.bind(this);
     this.sliderPrevious = this.sliderPrevious.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+  componentWillMount() {
+    // window.addEventListener('onClick',this.sliderNext)
   }
 
   componentDidMount() {
@@ -39,10 +45,11 @@ export default class PhotoGallery extends React.Component {
         for (let i = 0; i < results.length; i++) {
           restaurantPhotos.push(results[i]);
         }
-        const firstThreePhotos = restaurantPhotos.slice(0,3);
+        const firstThreePhotos = restaurantPhotos.slice(0, 3);
         this.setState({
           photos: restaurantPhotos,
           currentPhotos: firstThreePhotos,
+          totalNumberOfPics: restaurantPhotos.length,
         });
       },
       error: (error) => {
@@ -52,10 +59,11 @@ export default class PhotoGallery extends React.Component {
   };
 
   handleOpen(photo) {
-    console.log(photo)
+    const index = this.state.photos.indexOf(photo);
     this.setState({
       showModal: true,
       selectedPhoto: photo,
+      modalIndex: index,
     });
   }
 
@@ -67,39 +75,43 @@ export default class PhotoGallery extends React.Component {
   }
 
 
-  previousPhoto(photo) {
+  previousPhoto() {
     let previousOne;
-    const index = this.state.photos.indexOf(photo);
-    if (index === 0) {
+    if (this.state.modalIndex === 0) {
       previousOne = this.state.photos[this.state.photos.length - 1];
     } else {
-      previousOne = this.state.photos[index - 1];
+      previousOne = this.state.photos[this.state.modalIndex - 1];
+    }
+    let newModalIndex = this.state.modalIndex - 1;
+    if (newModalIndex === -1) {
+      newModalIndex = this.state.totalNumberOfPics - 1;
     }
     this.setState({
       selectedPhoto: previousOne,
-    },()=> {
-      console.log(this.state.selectedPhoto)
+      modalIndex: newModalIndex,
     });
   }
 
-  nextPhoto(photo) {
+  nextPhoto() {
     let nextOne;
-    const index = this.state.photos.indexOf(photo);
-    if (index === (this.state.photos.length - 1)) {
+    if (this.state.modalIndex === (this.state.photos.length - 1)) {
       nextOne = this.state.photos[0];
     } else {
-      nextOne = this.state.photos[index + 1];
+      nextOne = this.state.photos[this.state.modalIndex + 1];
+    }
+    let newModalIndex = this.state.modalIndex + 1;
+    if (newModalIndex === this.state.totalNumberOfPics) {
+      newModalIndex = 0;
     }
     this.setState({
       selectedPhoto: nextOne,
+      modalIndex: newModalIndex,
     });
   }
 
   sliderNext() {
-    console.log(this.state.index)
     if (this.state.index < this.state.photos.length - 3) {
-      const nextThree = this.state.photos.slice((this.state.index+1), (this.state.index+4))
-      console.log(nextThree)
+      const nextThree = this.state.photos.slice((this.state.index + 1), (this.state.index + 4));
       this.setState({
         index: this.state.index + 1,
         currentPhotos: nextThree,
@@ -109,8 +121,7 @@ export default class PhotoGallery extends React.Component {
 
   sliderPrevious() {
     if (this.state.index > 0) {
-      const previousThree = this.state.photos.slice((this.state.index - 1), (this.state.index + 2))
-      console.log(previousThree)
+      const previousThree = this.state.photos.slice((this.state.index - 1), (this.state.index + 2));
       this.setState({
         index: this.state.index - 1,
         currentPhotos: previousThree,
@@ -118,20 +129,53 @@ export default class PhotoGallery extends React.Component {
     }
   }
 
+  handleKeyPress(event) {
+    if (event.keyCode === 27) {
+      this.handleClose();
+    } else if (event.keyCode === 37) {
+      this.previousPhoto();
+    } else if (event.keyCode === 39) {
+      this.nextPhoto();
+    }
+  }
+
   render() {
     return (
-      <div className="intro">
-        <a className="photo-gallery-prev" onClick = {() => this.sliderPrevious()}></a>
-        {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen}/>)}
-        <a className="photo-gallery-next" onClick = {()=> this.sliderNext()}></a>
+      <div className="wrapper"> 
+      <div className="intro" tabIndex={0} onKeyDown={this.handleKeyPress}>
+        {this.state.totalNumberOfPics>=3 &&
+          <a className="photo-gallery-prev" onClick={() => this.sliderPrevious()} ></a>
+        }
+        {this.state.currentPhotos.map((photo)=> <Photo photo = {photo} handleOpen = {this.handleOpen} totalNumberOfPics = {this.state.totalNumberOfPics} emptyPage = {this.state.emptyPage}/>)}
+        {this.state.totalNumberOfPics >= 3 &&
+          <a className="photo-gallery-next" onClick={() => this.sliderNext()}></a>
+        }
+        {this.state.totalNumberOfPics === 0 &&
+          <span>
+            <img height="220" width="660" src='https://s3-us-west-1.amazonaws.com/welp-icons/0Pictures.png' className="emptypage" />        
+          </span>
+        }
+        {this.state.totalNumberOfPics === 1 &&
+          <span>
+            <img height="220" width="440" src='https://s3-us-west-1.amazonaws.com/welp-icons/1Pictures.png' className="emptypage" />
+          </span>
+        }
+        {this.state.totalNumberOfPics === 2 &&
+          <span>
+            <img height="220" width="220" src='https://s3-us-west-1.amazonaws.com/welp-icons/2Pictures.png' className="emptypage" />
+          </span>
+        }
         {this.state.showModal && (
           <Modal
             selectedPhoto={this.state.selectedPhoto}
             handleClose={this.handleClose}
             previousPhoto={this.previousPhoto}
             nextPhoto={this.nextPhoto}
+            modalIndex={this.state.modalIndex}
+            totalNumberOfPics={this.state.totalNumberOfPics}
           />
         )}
+      </div>
       </div>
     );
   }
