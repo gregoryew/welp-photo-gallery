@@ -25,9 +25,6 @@ export default class PhotoGallery extends React.Component {
     this.sliderPrevious = this.sliderPrevious.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
-  componentWillMount() {
-    // window.addEventListener('onClick',this.sliderNext)
-  }
 
   componentDidMount() {
     const parsed = queryString.parse(location.search);
@@ -37,7 +34,7 @@ export default class PhotoGallery extends React.Component {
   getPhotos(id) {
     $.ajax({
       type: 'GET',
-      url: `/api/photo/${id}`,
+      url: `http://127.0.0.1:3003/api/photo/${id}`,
       dataType: 'json', 
       contentType: 'application/json',
       success: (results) => {

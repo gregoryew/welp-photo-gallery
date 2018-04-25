@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -11,6 +12,7 @@ app.use((req, res, next) => {
   console.log(req.url, req.method);
   next();
 });
+app.use(cors());
 
 app.get('/api/photo/:id', (req, res) => {
   db.getById(req.params.id, (error, results) => {
