@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentBox component renders the comment correctly renders correctly 1`] = `
+<div
+  className="comment"
+>
+  <div
+    className="commentblock1"
+  >
+    <div>
+      <img
+        className="comment-userprofile"
+        height="50"
+        src="https://s3-us-west-1.amazonaws.com/welp-icons/userProfile.png"
+        width="50"
+      />
+    </div>
+    <div
+      className="commentblock2"
+    >
+      <div>
+        <span
+          className="comment-username"
+        >
+          gscoular3
+        </span>
+      </div>
+      <div>
+        <img
+          className="comment-follwers"
+          height="20"
+          src="https://s3-us-west-1.amazonaws.com/welp-icons/followers.png"
+          width="25"
+        />
+        <span>
+          357
+        </span>
+        <img
+          className="comment-reviews"
+          height="20"
+          src="https://s3-us-west-1.amazonaws.com/welp-icons/reviews.png"
+          width="25"
+        />
+        <span>
+          739
+             
+        </span>
+        <span
+          className="comment-elite"
+        >
+             Elite '18 
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="comment-sentence"
+  >
+    This is a comment
+  </div>
+  <div
+    className="comment-date"
+  >
+    May 14, 2014
+  </div>
+  <div
+    className="comment-question"
+  >
+    Was this photo ...?
+  </div>
+  <div
+    className="comment-helpful"
+  >
+    <button>
+       Helpful  
+    </button>
+    <button>
+       Not Helpful 
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DescriptionBar component renders the description correctly renders correctly 1`] = `
+<div
+  className="descriptionbar"
+>
+  <div>
+    <img
+      className="comment-userprofile"
+      height="46"
+      src="https://s3-us-west-1.amazonaws.com/welp-icons/userProfile.png"
+      width="46"
+    />
+  </div>
+  <div
+    className="descriptionbarcomment"
+  >
+    <div
+      className="shortcomment"
+    >
+       This is a short comment 
+    </div>
+    <div
+      className="descriptionuser"
+    >
+       by 
+      gscoular3
+       
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal component renders the modal correctly renders correctly 1`] = `
+<div
+  className="modal"
+  onClick={[Function]}
+>
+  <span
+    className="close cursor"
+    onClick={[Function]}
+  >
+    Close  ×
+  </span>
+  <div
+    className="modal-photo"
+    onClick={[Function]}
+  >
+    <a
+      className="modal-prev"
+      onClick={[Function]}
+    />
+    <img
+      className="modal-selectedphoto"
+      src="https://s3-us-west-1.amazonaws.com/welp-photos/002-02.jpg"
+    />
+    <div
+      className="modal-underbar"
+      onClick={[Function]}
+    >
+      <span
+        className="modal-underbar-left"
+      >
+           Browse All 
+      </span>
+      <span
+        className="modal-underbar-middle"
+      >
+         
+        2
+         of 
+        5
+      </span>
+      <span
+        className="modal-underbar-right"
+      >
+         Share   
+      </span>
+    </div>
+    <a
+      className="modal-next"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="modal-comment"
+    onClick={[Function]}
+  >
+    <div
+      className="comment"
+    >
+      <div
+        className="commentblock1"
+      >
+        <div>
+          <img
+            className="comment-userprofile"
+            height="50"
+            src="https://s3-us-west-1.amazonaws.com/welp-icons/userProfile.png"
+            width="50"
+          />
+        </div>
+        <div
+          className="commentblock2"
+        >
+          <div>
+            <span
+              className="comment-username"
+            >
+              aivashintsov4
+            </span>
+          </div>
+          <div>
+            <img
+              className="comment-follwers"
+              height="20"
+              src="https://s3-us-west-1.amazonaws.com/welp-icons/followers.png"
+              width="25"
+            />
+            <span>
+              867
+            </span>
+            <img
+              className="comment-reviews"
+              height="20"
+              src="https://s3-us-west-1.amazonaws.com/welp-icons/reviews.png"
+              width="25"
+            />
+            <span>
+              890
+                 
+            </span>
+            <span
+              className="comment-elite"
+            >
+                 Elite '18 
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="comment-sentence"
+      >
+        This is a comment
+      </div>
+      <div
+        className="comment-date"
+      >
+        March 23, 2015
+      </div>
+      <div
+        className="comment-question"
+      >
+        Was this photo ...?
+      </div>
+      <div
+        className="comment-helpful"
+      >
+        <button>
+           Helpful  
+        </button>
+        <button>
+           Not Helpful 
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Photo component renders the photo correctly renders correctly 1`] = `
+<span
+  className="picture"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <img
+    className="image"
+    height="220"
+    src="https://s3-us-west-1.amazonaws.com/welp-photos/002-01.jpg"
+    width="220"
+  />
+</span>
+`;
+
+exports[`PhotoGallery component renders the PhotoGallery correctly renders correctly 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="intro"
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <span>
+      <img
+        className="emptypage"
+        height="220"
+        src="https://s3-us-west-1.amazonaws.com/welp-icons/0Pictures.png"
+        width="660"
+      />
+    </span>
+  </div>
+</div>
+`;
