@@ -17,10 +17,7 @@
 // })
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/welp');
-// const redisClient = require('redis').createClient;
-
-// const redis = redisClient(6379, 'localhost');
+module.exports.connection = mongoose.connect('mongodb://database/welp');
 
 var Schema = mongoose.Schema;
 
@@ -35,7 +32,7 @@ var photoSchema = new Schema({
     userReviews: Number,
 })
 
-var Photo = mongoose.model('Photo', photoSchema);
+module.exports.Photo = mongoose.model('Photo', photoSchema);
 
 module.exports.getById = (redis, businessId, callback) => {
   redis.get(businessId, (error, reply) => {
@@ -44,7 +41,7 @@ module.exports.getById = (redis, businessId, callback) => {
     } else if (reply) {
       callback(JSON.parse(reply));
     } else {
-      Photo.find({ id: businessId }, (err, results) => {
+      module.exports.Photo.find({ id: businessId }, (err, results) => {
         if (err) {
           //callback(err, null);
           console.log(err)

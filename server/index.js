@@ -9,7 +9,7 @@ const responseTime = require('response-time');
 
 const redisClient = require('redis').createClient;
 
-const redis = redisClient(6379, 'localhost');
+const redis = redisClient('redis://cache:6379');
 
 
 app.use(express.static(path.join(__dirname, '../client/public')));
