@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "start": "node database/seed.js & node server/index.js",
     "test": "jest --coverage"
   },
   "author": "Dylan Qian",

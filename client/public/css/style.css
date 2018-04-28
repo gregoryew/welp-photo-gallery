@@ -26,7 +26,7 @@
 
 .modal {
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     padding-top: 25px; /* Location of the box */
     display:flex;
     left: 0;
@@ -67,12 +67,12 @@
     position: relative;
     display: flex;
     height: 20px;
-    z-index:2;
+    z-index:4;
     background-color: rgb(0, 0, 0); /* Fallback color */
     /* background-color: rgba(0, 0, 0, 0.2); Black w/ opacity */
     padding:0px;
     margin:0px;
-    top:-23px;
+    top:-20px;
 }
 
 .modal-underbar-left {
@@ -160,17 +160,18 @@
 .photo-gallery-prev,
 .photo-gallery-next {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
+  position: relative;
   width: auto;
   padding: 30px;
-  margin-top: -50px;
   font-weight: bold;
   font-size: 20px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
+  z-index:1;
+  margin-left:-40px;
+  margin-right:-60px;
 }
 
 /* Position the "next button" to the right */
@@ -195,7 +196,8 @@
     background-color: rgba(0, 0, 0, 0.2); /* Black w/ opacity */
     padding:0px;
     margin:0px;
-    top:-50px;
+    width:250px;
+    top:-45px;
 }
 
 .descriptionbarcomment{

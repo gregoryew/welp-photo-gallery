@@ -34,7 +34,7 @@ export default class PhotoGallery extends React.Component {
   getPhotos(id) {
     $.ajax({
       type: 'GET',
-      url: `http://127.0.0.1:3003/api/photo/${id}`,
+      url: `http://54.147.42.91:80/api/photo/${id}`,
       dataType: 'json', 
       contentType: 'application/json',
       success: (results) => {

@@ -1,13 +1,14 @@
-# Project Name
+# Welp-Photo-Gallery
 
-> Project description
+> Photo gallery modules for Welp, a front-end-project that is designed to clone yelp restaurant page.
 
-## Related Projects
+## Module
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+- http://ec2-54-147-42-91.compute-1.amazonaws.com/?id=5
+
+## Welp Project
+
+- http://ec2-52-207-56-122.compute-1.amazonaws.com/?id=40
 
 ## Table of Contents
 
@@ -17,7 +18,7 @@
 
 ## Usage
 
-> Some usage instructions
+> There are 100 different restaurants that you can change the id number on the url link
 
 ## Requirements
 
