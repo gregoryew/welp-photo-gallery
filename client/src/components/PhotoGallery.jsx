@@ -139,40 +139,40 @@ export default class PhotoGallery extends React.Component {
   render() {
     return (
       <div className="wrapper"> 
-        <div className="intro" tabIndex={0} onKeyDown={this.handleKeyPress}>
-          {this.state.totalNumberOfPics>=3 &&
-            <a className="photo-gallery-prev" onClick={() => this.sliderPrevious()} ></a>
-          }
-            {this.state.currentPhotos.map((photo) => <Photo key={photo.photoId} photo = {photo} handleOpen = {this.handleOpen} totalNumberOfPics = {this.state.totalNumberOfPics} emptyPage = {this.state.emptyPage}/>)}
-          {this.state.totalNumberOfPics >= 3 &&
-            <a className="photo-gallery-next" onClick={() => this.sliderNext()}></a>
-          }
-          {this.state.totalNumberOfPics === 0 &&
-            <span>
-              <img height="220" width="660" src='https://s3-us-west-1.amazonaws.com/welp-icons/0Pictures.png' className="emptypage" />        
-            </span>
-          }
-          {this.state.totalNumberOfPics === 1 &&
-            <span>
-              <img height="220" width="440" src='https://s3-us-west-1.amazonaws.com/welp-icons/1Pictures.png' className="emptypage" />
-            </span>
-          }
-          {this.state.totalNumberOfPics === 2 &&
-            <span>
-              <img height="220" width="220" src='https://s3-us-west-1.amazonaws.com/welp-icons/2Pictures.png' className="emptypage" />
-            </span>
-          }
-          {this.state.showModal && (
-            <Modal
-              selectedPhoto={this.state.selectedPhoto}
-              handleClose={this.handleClose}
-              previousPhoto={this.previousPhoto}
-              nextPhoto={this.nextPhoto}
-              modalIndex={this.state.modalIndex}
-              totalNumberOfPics={this.state.totalNumberOfPics}
-            />
-          )}
-        </div>
+      <div className="intro" tabIndex={0} onKeyDown={this.handleKeyPress}>
+        {this.state.totalNumberOfPics>=3 &&
+          <a className="photo-gallery-prev" onClick={() => this.sliderPrevious()} ></a>
+        }
+          {this.state.currentPhotos.map((photo) => <Photo key={photo.photoId} photo = {photo} handleOpen = {this.handleOpen} totalNumberOfPics = {this.state.totalNumberOfPics} emptyPage = {this.state.emptyPage}/>)}
+        {this.state.totalNumberOfPics >= 3 &&
+          <a className="photo-gallery-next" onClick={() => this.sliderNext()}></a>
+        }
+        {this.state.totalNumberOfPics === 0 &&
+          <span>
+            <img height="220" width="660" src='https://s3-us-west-1.amazonaws.com/welp-icons/0Pictures.png' className="emptypage" />        
+          </span>
+        }
+        {this.state.totalNumberOfPics === 1 &&
+          <span>
+            <img height="220" width="440" src='https://s3-us-west-1.amazonaws.com/welp-icons/1Pictures.png' className="emptypage" />
+          </span>
+        }
+        {this.state.totalNumberOfPics === 2 &&
+          <span>
+            <img height="220" width="220" src='https://s3-us-west-1.amazonaws.com/welp-icons/2Pictures.png' className="emptypage" />
+          </span>
+        }
+        {this.state.showModal && (
+          <Modal
+            selectedPhoto={this.state.selectedPhoto}
+            handleClose={this.handleClose}
+            previousPhoto={this.previousPhoto}
+            nextPhoto={this.nextPhoto}
+            modalIndex={this.state.modalIndex}
+            totalNumberOfPics={this.state.totalNumberOfPics}
+          />
+        )}
+      </div>
       </div>
     );
   }

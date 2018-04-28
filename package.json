@@ -8,18 +8,6 @@
     "start": "node database/seed.js & node server/index.js",
     "test": "jest --coverage"
   },
-  "jest": {
-    "setupFiles": [
-      "./test/testSetUp.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
-  },
   "author": "Dylan Qian",
   "license": "ISC",
   "devDependencies": {
@@ -36,24 +24,18 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-env": "^2.4.1",
-    "babel-jest": "^22.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.15.0",
-    "jest-enzyme": "^6.0.0",
     "jquery": "^3.3.1",
     "lightbox": "^0.5.0",
     "lightbox2": "^2.10.0",
     "moment": "^2.22.1",
     "mongoose": "^5.0.14",
     "query-string": "^6.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-test-renderer": "^16.3.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "redis": "^2.8.0",
     "request": "^2.85.0",
     "response-time": "^2.3.2"

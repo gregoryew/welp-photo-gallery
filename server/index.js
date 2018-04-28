@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   console.log(req.url, req.method);
-  next(); 
+  next();
 });
 app.use(cors());
 app.use(responseTime());
